@@ -7,7 +7,7 @@ import state from 'state'
 
 import { useCallback } from 'hooks'
 
-import { IconTruck, IconLocation } from 'components/shared/icons'
+import { IconTruck, IconSpeed, IconLocation } from 'components/shared/icons'
 import { Button } from 'components/shared/inputs'
 
 import './vehicle.scss'
@@ -19,11 +19,12 @@ type DriverProps = {
     id: string,
     name: string,
     vehicle: string,
+    speed: string,
     location: number[],
     online: boolean,
 }
 
-const Vehicle = observer(({ id, name, vehicle, location, online }
+const Vehicle = observer(({ id, name, vehicle, speed, location, online }
     : DriverProps) => {
 
     return (
@@ -41,6 +42,16 @@ const Vehicle = observer(({ id, name, vehicle, location, online }
                     </div>
                     <div className={cx('__vehicle-description')}>
                         {vehicle}
+                    </div>
+                </div>
+            </div>
+
+            { /* Speed */ }
+            <div className={cx('__group', '__speed', { '__speed--hidden': !speed })}>
+                <IconSpeed className={cx('__icon', '__speed-icon')} />
+                <div className={cx('__column', '__speed-info')}>
+                    <div className={cx('__speed-theme')}>
+                        {speed} KM/H
                     </div>
                 </div>
             </div>

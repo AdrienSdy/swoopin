@@ -67,6 +67,24 @@
     }
   }
 
+  &__speed {
+    &--hidden {
+      display: none;
+    }
+
+    &-theme {
+      font-weight: 500;
+      margin-bottom: -0.25em;
+      font-size: 0.9rem
+    }
+
+    &-background {
+      font-weight: 400;
+      opacity: 0.5;
+      font-size: 0.8rem;
+    }
+  }
+
   &__location {
     &--hidden {
       display: none;
