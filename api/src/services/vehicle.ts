@@ -78,6 +78,14 @@ function VehicleService() {
         getDrivers() : any[] {
             return this.vehicles
         },
+
+        getVehicle(vehicleId : string) : any {
+            return this.vehicles.find((vehicle : any) => vehicle.id === vehicleId)
+        },
+
+        setOnline(vehicle : any) : void {
+            vehicle.online = true
+        },
     })
 
     return instance
