@@ -32,6 +32,7 @@ const VehiclesRoute = async (server : any, opts : any, next: () => void) => {
                                     type: 'number',
                                 },
                             },
+                            updateDate: { type: 'string' },
                         },
                     },
                 },
