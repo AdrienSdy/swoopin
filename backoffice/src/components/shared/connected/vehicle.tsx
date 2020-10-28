@@ -8,6 +8,7 @@ import state from 'state'
 import { useCallback } from 'hooks'
 
 import { IconTruck, IconLocation } from 'components/shared/icons'
+import { Button } from 'components/shared/inputs'
 
 import './vehicle.scss'
 
@@ -58,7 +59,7 @@ const Vehicle = observer(({ id, name, vehicle, location, online }
 
             { /* Buttons ([Online|Offline]) */ }
             <div className={cx('__group', '__buttons')}>
-                { /* FIXME */ }
+                <Button className={cx('__button', { '__button--hidden': online })} onClick={() => state.vehicles.setOnline(id, state.session)}>Connecter</Button>
             </div>
 
         </div>
