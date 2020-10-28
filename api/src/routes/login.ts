@@ -12,6 +12,17 @@ const LoginRoute = async (server : any, opts : any, next: () => void) => {
     server.route({
         method: 'POST',
         url: '/login',
+        schema: {
+            body: {
+                type: 'object',
+                required: ['login', 'password'],
+                properties: {
+                    login: { type: 'string' },
+                    password: { type: 'string' },
+                },
+                additionalProperties: false,
+            },
+        },
         async handler(req: any, res: any) {
             const login = req.body.login
             const account = req.conf.account
