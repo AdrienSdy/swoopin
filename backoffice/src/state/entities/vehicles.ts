@@ -69,6 +69,11 @@ export default class StateVehicles {
         this.api.post(`/vehicles/online/${id}`)
     }
 
+    @action.bound async setOffline(id: string) {
+        this.api.defaults.headers.common.Authorization = `Bearer ${this.session.token}`
+        this.api.post(`/vehicles/offline/${id}`)
+    }
+
     @action.bound async updateVehicles(session: any) {
         const response = await this.api.get('/vehicles', { headers: { 'Authorization': 'Bearer ' + session.token } })
         this.updateList(response.data)
