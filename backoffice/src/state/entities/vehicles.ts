@@ -11,6 +11,7 @@ type Vehicle = {
     name: string,
     vehicle: string,
     speed: string,
+    temperature: string,
     location: number[],
     online: boolean,
 }
