@@ -60,6 +60,7 @@ const Vehicle = observer(({ id, name, vehicle, location, online }
             { /* Buttons ([Online|Offline]) */ }
             <div className={cx('__group', '__buttons')}>
                 <Button className={cx('__button', { '__button--hidden': online })} onClick={() => state.vehicles.setOnline(id, state.session)}>Connecter</Button>
+                <Button className={cx('__button', { '__button--hidden': !online })} onClick={() => state.vehicles.setOffline(id, state.session)}>Déconnecter</Button>
             </div>
 
         </div>
