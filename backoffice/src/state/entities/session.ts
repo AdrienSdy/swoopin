@@ -63,7 +63,14 @@ export default class StateSession {
     }
 
     @action.bound async connect({ login, password } : { login: string, password: string}) {
-        // FIXME
+        try {
+            const response = await this.api.post('/login', { login, password })
+
+            const { token } = response.data
+            this.updateToken(token)
+        } catch (error) {
+            throw { message: error.response.data.message || 'internal_error' }
+        }
     }
 
     @observable locale = null
