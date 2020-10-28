@@ -11,6 +11,7 @@ type Vehicle = {
     name: string,
     vehicle: string,
     plate: string,
+    updateDate: string,
     speed: string,
     temperature: string,
     location: number[],
