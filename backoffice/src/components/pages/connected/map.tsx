@@ -70,7 +70,15 @@ const PageDrivers = observer(({ location } : { location: any }) => {
                             'icon-anchor': 'bottom',
                         }}
                     >
-                        {/* FIXME */ }
+                        {
+                            state.vehicles.online.map((vehicle: any) => <Feature
+                                key={vehicle._id}
+                                coordinates={vehicle.location.slice().reverse()}
+                                onMouseEnter={() => mapRef.map.getCanvas().style.cursor = 'pointer'}
+                                onMouseLeave={() => mapRef.map.getCanvas().style.cursor = ''}
+                                onClick={(e) => onMapVehicleClick(e, vehicle.id)}
+                            />)
+                        }
                     </Layer>
 
                     { /* Offline vehicles layer */ }
@@ -83,7 +91,15 @@ const PageDrivers = observer(({ location } : { location: any }) => {
                             'icon-anchor': 'bottom',
                         }}
                     >
-                        {/* FIXME */ }
+                        {
+                            state.vehicles.offline.map((vehicle: any) => <Feature
+                                key={vehicle._id}
+                                coordinates={vehicle.location.slice().reverse()}
+                                onMouseEnter={() => mapRef.map.getCanvas().style.cursor = 'pointer'}
+                                onMouseLeave={() => mapRef.map.getCanvas().style.cursor = ''}
+                                onClick={(e) => onMapVehicleClick(e, vehicle.id)}
+                            />)
+                        }
                     </Layer>
 
                     { /* Popup */ }
