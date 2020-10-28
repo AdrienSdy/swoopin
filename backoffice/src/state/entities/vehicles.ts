@@ -10,6 +10,7 @@ type Vehicle = {
     id: string,
     name: string,
     vehicle: string,
+    plate: string,
     speed: string,
     temperature: string,
     location: number[],
