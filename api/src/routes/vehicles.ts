@@ -59,6 +59,23 @@ const VehiclesRoute = async (server : any, opts : any, next: () => void) => {
             }
         },
     })
+
+    server.route({
+        method: 'POST',
+        url: '/vehicles/offline/:vehicleId',
+        preHandler: server.auth([server.authenticateAccount]),
+        async handler(req: any, res: any) {
+            const { vehicleId } = req.params
+            const vehicle = VehicleService.getVehicle(vehicleId)
+
+            if (vehicle) {
+                VehicleService.setOffline(vehicle)
+                return {}
+            } else {
+                throw { statusCode: 500, error: 'Internal Server Error' }
+            }
+        },
+    })
     next()
 }
 
