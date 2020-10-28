@@ -20,11 +20,12 @@ type DriverProps = {
     name: string,
     vehicle: string,
     speed: string,
+    temperature: string,
     location: number[],
     online: boolean,
 }
 
-const Vehicle = observer(({ id, name, vehicle, speed, location, online }
+const Vehicle = observer(({ id, name, vehicle, speed, temperature, location, online }
     : DriverProps) => {
 
     return (
@@ -52,6 +53,16 @@ const Vehicle = observer(({ id, name, vehicle, speed, location, online }
                 <div className={cx('__column', '__speed-info')}>
                     <div className={cx('__speed-theme')}>
                         {speed} KM/H
+                    </div>
+                </div>
+            </div>
+
+            { /* Temperature */ }
+            <div className={cx('__group', '__temperature', { '__temperature--hidden': !temperature })}>
+                <IconSpeed className={cx('__icon', '__temperature-icon')} />
+                <div className={cx('__column', '__temperature-info')}>
+                    <div className={cx('__temperature-theme')}>
+                        {temperature} °C
                     </div>
                 </div>
             </div>
