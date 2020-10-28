@@ -41,6 +41,16 @@ const PageDrivers = observer(({ location } : { location: any }) => {
         setPopup({ ...popup, show: true })
     }, [])
 
+    const mapVehicleFocus = (vehicle: any) => {
+        mapRef.map?.flyTo({
+            center: [vehicle.location[1], vehicle.location[0]],
+            essential: true,
+            zoom: 13,
+            speed: 0.5,
+            curve: 1,
+        })
+    }
+
     return (
         <section id="page-map" className={block}>
             <SEO title='Carte' />
@@ -128,7 +138,13 @@ const PageDrivers = observer(({ location } : { location: any }) => {
                 <div className={cx('__sidebar')}>
                     <h2 className={cx('__title')}>Véhicules</h2>
                     <div className={cx('__list')}>
-                        { state.vehicles.all.map((vehicle: any) => <Vehicle key={vehicle._id} {...vehicle} />) }
+                        {
+                            state.vehicles.all.map((vehicle: any) => <Vehicle
+                                key={vehicle._id}
+                                {...vehicle}
+                                onClick={mapVehicleFocus.bind(null, vehicle)}
+                            />)
+                        }
                     </div>
                 </div>
 

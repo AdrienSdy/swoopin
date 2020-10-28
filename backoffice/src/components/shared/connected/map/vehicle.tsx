@@ -16,13 +16,14 @@ type DriverProps = {
     speed: number,
     temperature: number,
     online: boolean,
+    onClick: (vehicle: any) => void,
 }
 
-const Vehicle = observer(({ id, name, vehicle, plate, speed, temperature, online }
+const Vehicle = observer(({ id, name, vehicle, plate, speed, temperature, online, onClick }
 : DriverProps) => {
 
     return (
-        <div className={[block, cx({ '--online': online })].join(' ')}>
+        <div className={[block, cx({ '--online': online })].join(' ')} onClick={onClick}>
             <div className={cx('__vehicle-name')}>
                 {name}
             </div>
