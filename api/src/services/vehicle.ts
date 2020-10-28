@@ -86,6 +86,10 @@ function VehicleService() {
         setOnline(vehicle : any) : void {
             vehicle.online = true
         },
+
+        setOffline(vehicle : any) : void {
+            vehicle.online = false
+        },
     })
 
     return instance
