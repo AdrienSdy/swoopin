@@ -13,7 +13,21 @@ const LoginRoute = async (server : any, opts : any, next: () => void) => {
         method: 'POST',
         url: '/login',
         async handler(req: any, res: any) {
-            // FIXME
+            const login = req.body.login
+            const account = req.conf.account
+
+            if (login !== account.email) {
+                throw { statusCode: 401, error: 'Bad Request', message: 'user_not_found' }
+            }
+
+            if (EncryptionService.comparePassword({ password: req.body.password, salt: account.id, encrypted: account.password })) {
+                const payload = { userId: account.id, name: account.name, isAdmin: false }
+                const token = server.jwt.sign({ payload })
+
+                return { token }
+            } else {
+                throw { statusCode: 401, error: 'Bad Request', message: 'wrong_credentials' }
+            }
         },
     })
     next()
